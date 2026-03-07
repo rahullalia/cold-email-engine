@@ -1,0 +1,35 @@
+{
+  "skill_name": "coldEmailEngine",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "I want to start running cold email campaigns for my agency. I'm targeting home service businesses in California. Help me set this up from scratch.",
+      "expected_output": "Interactive ICP walkthrough with probing questions, market validation against the 4 indicators, then guidance toward offer creation. Should NOT dump frameworks. Should ask clarifying questions about specific home service types, company size, pain points, and budget.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Write me a 4-step cold email sequence for plumbing companies doing $1M to $5M in revenue. My offer is a done-for-you digital marketing package that gets them 15 new booked jobs per month.",
+      "expected_output": "A complete 4-step email sequence using SPARK framework. Each step should be 60-120 words, lowercase subjects, low-friction CTAs, and each follow-up adds new value. Should use an appropriate archetype and include variant suggestions. The first email should NOT read like a typical cold email — it must break the pattern with an opener that doesn't follow the compliment/observation → pitch → CTA skeleton.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "My campaign targeting HVAC companies has a 65% open rate but only 1.5% reply rate. What's wrong and how do I fix it?",
+      "expected_output": "Diagnosis using the 6-layer metrics stack. Should identify this as a Layer 3-4 problem (copy, not deliverability). Should ask follow-up questions about the email content, CTA, personalization level, and list quality before prescribing fixes.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I'm targeting cleaning companies with 5 to 15 employees in California. I do digital marketing but I'm not sure how to position my offer for cold email. What should I actually offer these people? I don't want to just say 'we do marketing.' Help me build an offer that makes them want to reply.",
+      "expected_output": "Interactive walkthrough of the offer creation framework. Should ask probing questions about dream outcomes, problems, and solutions before building the offer. Should distinguish between cold traffic and warm traffic offers. Should push past generic 'digital marketing' to a specific, tangible outcome. Should use the Value Equation and help build a named offer using MAGIC formula.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "I need to build a list of 1,000+ landscaping companies in the Bakersfield and Fresno area. How do I find them, what data should I collect, and how do I make sure the emails are good before I load them into my sending platform?",
+      "expected_output": "Step-by-step lead sourcing workflow using scrapers, email finding, and verification. Should recommend specific data sources (Google Maps scraper, directories). Should include list hygiene rules, signal enrichment suggestions, and formatting for import. Should mention deduplication and catch-all handling.",
+      "files": []
+    }
+  ]
+}
