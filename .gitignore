@@ -1,0 +1,6 @@
+# Credentials — never commit these
+coldEmail.env
+*.env
+
+# macOS
+.DS_Store
