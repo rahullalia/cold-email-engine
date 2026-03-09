@@ -6,7 +6,11 @@ Credentials are loaded from `~/lalia/4-Resources/mcp/coldEmail.env`.
 
 ---
 
-## Step 1: Apify
+## Step 1: Build the List
+
+### Path A: Apify (Local/SMB ICP)
+
+Only use Apify if the ICP is local/consumer-facing businesses. For B2B decision-makers, see Path B.
 
 ### Actor Selection by ICP
 
@@ -94,11 +98,41 @@ Before running, estimate credits:
 
 Tell the user: "This run will use approximately X Apify credits. Continue?"
 
-### Error Handling
+### Apify Error Handling
 
-- `FAILED` run → Check the run log via `GET /v2/actor-runs/{runId}/log`. Common issues: rate limiting, search query too broad, location not found.
-- Empty dataset → Broaden the search query or try a different actor.
-- Partial results → Run may have hit a timeout. Download what's available and re-run for remaining.
+- **`FAILED` run:** Check the run log via `GET /v2/actor-runs/{runId}/log`. Common issues: rate limiting, search query too broad, location not found.
+- **0 results:** Search query is too narrow (city too specific) or too broad (category not granular enough). Try widening the geography (city → metro area) or narrowing the category. If still 0 after two attempts, ask the user to provide a CSV instead.
+- **Partial results:** Run may have hit a timeout. Download what's available (`/dataset/items`), note the count, and re-run with adjusted params for the remainder.
+- **Rate limit during polling:** Back off to 30-second intervals. Do not hammer the status endpoint.
+
+Always report partial progress before raising an error: "Apify returned 47 results before the run failed. Here's what was collected — continuing with this subset or re-running?"
+
+---
+
+### Path B: CSV Import (Apollo / Sales Navigator / Clay / Other)
+
+Use this path when the user provides a CSV instead of running Apify. Also the required path for B2B decision-maker ICPs.
+
+**Accepted sources:** Apollo export, LinkedIn Sales Navigator export, Clay export, manual CSV, or any other list source the user provides.
+
+**Required columns (minimum):**
+- Email
+- First Name
+- Last Name
+- Company Name
+
+**Optional but valuable:**
+- Website / Domain
+- Job Title
+- LinkedIn URL
+- Company Size
+- Location
+
+**Processing:**
+1. Parse the CSV and validate required columns exist
+2. Flag any rows missing email or company name
+3. Map to the standard internal format before passing to Step 2 (clean/dedupe)
+4. If website/domain is missing for leads: note that Pass 1 qualification will be limited to whatever signals are in the CSV (title, company size, etc.) — no review or GMB data available
 
 ---
 
@@ -174,11 +208,75 @@ Response: `{"Credits": "1000"}` — each email verification costs 1 credit.
 
 Tell the user: "Verification will use X ZeroBounce credits. You have Y remaining. Continue?"
 
-### Error Handling
+### ZeroBounce Error Handling
 
-- `402` response → Out of credits. Stop and tell user.
-- `400` response → Malformed request. Check email format in batch.
-- Network timeout → Retry the failed batch once before raising an error.
+- **`402` (out of credits):** Stop immediately. Report how many were verified before hitting the limit and how many remain. Tell the user: "You have X leads unverified. Top up ZeroBounce credits and re-run Step 3 from where it stopped, or send only the verified batch."
+- **`400` (malformed request):** Check email format in the batch — common cause is special characters or trailing spaces. Clean and retry.
+- **Network timeout:** Save progress (which emails were already verified), retry the failed batch once with a 10-second delay. If it fails again, report partial results and stop.
+- **Partial completion:** Always report "X/Y emails verified before error" with the breakdown (valid/invalid/catch-all). Never discard partial results silently.
+
+---
+
+## Step 3 (Alternate): NeverBounce
+
+Use this path if the user chose NeverBounce as their verification tool.
+
+### Pre-flight Credit Check
+
+```
+GET https://api.neverbounce.com/v4/account/info?api_key={NEVERBOUNCE_API_KEY}
+```
+
+Response includes `credits_remaining`. Confirm credits before running.
+
+### Batch Verification API
+
+```
+POST https://api.neverbounce.com/v4/bulk/job/create
+Content-Type: application/json
+
+{
+  "api_key": "{NEVERBOUNCE_API_KEY}",
+  "input_location": "supplied",
+  "input": [
+    ["email", "name"],
+    ["test@example.com", "John Smith"],
+    ["another@example.com", "Jane Doe"]
+  ],
+  "auto_parse": true,
+  "auto_start": true
+}
+```
+
+Returns `{ "id": "job_id", "status": "complete" }` once processed.
+
+### Check Job Status
+
+```
+GET https://api.neverbounce.com/v4/bulk/job/status?api_key={NEVERBOUNCE_API_KEY}&job_id={job_id}
+```
+
+Poll every 15 seconds until `status: "complete"`.
+
+### Download Results
+
+```
+GET https://api.neverbounce.com/v4/bulk/job/download?api_key={NEVERBOUNCE_API_KEY}&job_id={job_id}
+```
+
+**NeverBounce status values and actions:**
+
+| Status | Action |
+|--------|--------|
+| `valid` | Keep — primary list |
+| `invalid` | Remove |
+| `catchall` | Keep — secondary "risky" segment |
+| `unknown` | Remove |
+| `disposable` | Remove |
+
+### NeverBounce Error Handling
+
+Same pattern as ZeroBounce: pre-flight credit check, partial result reporting, never discard partial progress silently.
 
 ---
 

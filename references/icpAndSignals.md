@@ -97,13 +97,32 @@ When scraping and qualifying, these signals increase tier:
 
 ---
 
-## Tier Assignment Quick Reference
+## Tier Assignment — Two-Pass Process
 
-| Tier | Criteria | Personalization Level |
-|------|----------|-----------------------|
-| T1 | All qualifiers confirmed + at least one buying signal | Custom line per lead |
-| T2 | All qualifiers confirmed, no signal found | Bucket opener by segment |
+Qualification runs in two passes. Pass 1 is fast (no web fetches, uses scraped data only). Pass 2 is targeted (WebFetch only the strongest candidates, capped at 100).
+
+### Pass 1: Score Without Fetching (Run on All Leads)
+
+Using fields already in the scraped dataset or CSV:
+- Check each qualifier from the brief (category match, geography, review count, rating, business size signals)
+- Look for buying signal indicators in scraped data: review text mentioning wait times or capacity issues, GMB listing completeness, rating under 4.5 with high review count, hiring language if scraped
+- Sort into preliminary tiers
+
+If Pass 1 surfaces more than 100 T1 candidates: rank by signal density (most qualifiers confirmed + most buying signals + highest review count). Take the top 100 for Pass 2. Push the rest to T2.
+
+### Pass 2: Confirm With Fetch (T1 Candidates Only, Max 100)
+
+WebFetch each T1 candidate's website. Pull: service language, team size signals, pricing, growth language, content recency. Cross-reference scraped reviews for pain points.
+
+Upgrade or downgrade tier based on what you find. Write a `context` note per lead — one or two specific facts worth referencing in the email.
+
+### Tier Definitions
+
+| Tier | Criteria | Personalization |
+|------|----------|----------------|
+| T1 | All qualifiers confirmed + buying signal verified via fetch | Custom line per lead (from Pass 2 context) |
+| T2 | All qualifiers confirmed in scraped data, no signal or not fetched | Bucket opener by segment |
 | T3 | Most qualifiers confirmed, one missing | Generic industry opener |
 | DQ | Fails a qualifier or hard DQ criteria | Remove from list |
 
-Keep the tiers simple. A lead either fits or it doesn't — don't overthink borderline cases. When in doubt, DQ. A smaller, cleaner list outperforms a bigger, messier one every time.
+Keep the tiers simple. When in doubt, DQ. A smaller, cleaner list outperforms a bigger, messier one every time.

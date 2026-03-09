@@ -262,18 +262,51 @@ Structure the sequence as **two pairs of two emails in separate threads**, not o
 - Minimum 200 sends per variant
 - Winner = highest **positive** reply rate (not total)
 
-### Content-Priming (Hormozi Method)
+### Email 3 — Three Paths (Choose Based on What You Have)
 
-78% of high-value buyers consume 2+ pieces of genuine content before they're ready to buy. Instead of pushing for a meeting in Email 3, inject a content piece.
+This decision is made at intake (content asset question), not mid-sequence. Pick the right path and write Email 3 accordingly.
 
-**How to use it:**
-- Email 3 (Thread B opener): offer something genuinely useful — a case study, a short guide, a before/after breakdown, a video
-- Frame it as "I made this for companies like yours" not "download my lead magnet"
-- Ask the user which content asset to use. If they don't have one, suggest they create a one-page case study from an existing client result first.
+**Path A: Full Content Asset (case study, guide, video, before/after breakdown)**
+
+78% of high-value buyers consume 2+ pieces of genuine content before they're ready to buy. If a real asset exists, use it here.
+
+- Open Thread B with a new subject line
+- Offer the asset directly — frame it as made for companies like theirs, not a lead magnet
+- CTA is soft: "Want me to send it over?" or "Worth a look?"
 - The goal: warm the prospect before asking for time. Let the content do the selling.
 
-**Example:**
+Example:
 > "Put together a breakdown of how we helped a cleaning company in Folsom get from 38 to 156 Google reviews in 60 days. Worth sending over if you want to see the playbook?"
+
+**Path B: Client Result (have the result, no formal document)**
+
+If there's a strong client outcome but nothing written up, build a micro case study before drafting Email 3. Four components:
+
+1. Client type (generalized, not named): "a 15-person cleaning company in Sacramento"
+2. The problem they had: "couldn't control when the next referral would come in"
+3. The result: "went from 2 inbound calls a week to 11"
+4. The timeframe: "in 6 weeks"
+
+Assembled: "We helped a 15-person cleaning company in Sacramento go from 2 inbound calls a week to 11 in 6 weeks by fixing how they showed up on Google. Happy to send over the breakdown of what we did if it's relevant."
+
+Once written, use it exactly like Path A — Email 3 becomes a content-priming email offering the micro story.
+
+**Path C: No Asset, No Results Yet (Poke the Bear)**
+
+When there's nothing to offer, Email 3 switches to a diagnostic question that makes the prospect rethink their current situation. The question is the CTA — no meeting ask, no content offer.
+
+Structure:
+- Open Thread B with a new subject line, different angle than Email 1
+- Ask one neutral, genuinely curious question about their current setup
+- One sentence max after the question — don't pitch
+- Let their answer (or silence) do the qualifying
+
+Examples:
+- "How do you know your current marketing setup is actually bringing in the right customers?"
+- "If referrals slow down next quarter, what's the backup plan?"
+- "How do you know what it's costing you when a lead goes cold?"
+
+Rules for Path C: never ask a leading question. Different value angle than Email 1 — if Email 1 was about getting more leads, Email 3 asks about lead quality or reliability. The question should make them think, not put them on the defensive.
 
 ### Key Sequence Rules
 
