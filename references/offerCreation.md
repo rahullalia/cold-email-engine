@@ -305,9 +305,13 @@ If yes, proceed to email copy (Phase 4). If no, loop back.
   - "Time Management for Outbound B2B Sales Reps" = $1,997
 
 ### When Offers Fatigue (Refresh Order)
-1. Change the creative
+
+Work through these in order — change the actual offer only as a last resort:
+
+1. Change the creative (images, visuals)
 2. Change the body copy
 3. Rename the offer (MAGIC rename)
 4. Change the duration
-5. Change the enhancer
-6. Change the price (last resort)
+5. Change the enhancer (bonus, discount component)
+6. Change the price
+7. Change the actual offer

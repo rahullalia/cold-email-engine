@@ -297,6 +297,20 @@ Trigger-based Re-entry ONLY (new signal required)
 | Full sequence | Quarterly |
 | If reply rate drops 30%+ from peak | Immediately |
 
+## Offer Fatigue Rotation (Hormozi)
+
+When a campaign is declining, don't jump straight to rebuilding the offer. Work through this order:
+
+1. **Change the creative** — swap images or visual elements if any
+2. **Change the body copy** — new angle, new opener, new archetype
+3. **Rename the offer** — use the MAGIC formula to re-wrap the same thing with a fresh name
+4. **Change the duration** — "90-day" becomes "30-day sprint"
+5. **Change the enhancer** — swap the bonus, change the discount component
+6. **Change the price** — only after everything above is exhausted
+7. **Change the actual offer** — last resort, means the market has moved or the offer was wrong from the start
+
+The wrapper (name, angle, framing) fatigues much faster than the underlying offer. Most "dead campaigns" can be revived by steps 1-3 alone.
+
 ---
 
 ## Campaign Naming Convention

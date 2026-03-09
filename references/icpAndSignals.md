@@ -1,234 +1,109 @@
-# ICP, Qualification & Signals Reference
+# ICP & Qualification Reference
 
-Consolidated from ICP Matrix Builder, Account Qualification (FITS), Intent Signals, Trigger Mapping, Lead Prioritization, and Persona Development. This is the reference for Phase 1 of the Cold Email Engine.
-
----
-
-## The ICP Matrix: 5 Dimensions
-
-### Dimension 1: Firmographic Fit
-
-| Attribute | Tier 1 (Best) | Tier 2 (Good) | Tier 3 (OK) | DQ |
-|-----------|---------------|---------------|-------------|-----|
-| Company size | [define] | [define] | [define] | Too small/large |
-| Revenue | [define] | [define] | [define] | Outside range |
-| Industry | Primary verticals | Adjacent | Emerging | No fit |
-| Geography | Primary markets | Secondary | Expansion | Restricted |
-| Business model | Exact match | Similar | Adaptable | Incompatible |
-| Growth stage | Ideal stage | Adjacent | Possible | Wrong stage |
-
-**How to fill this in:**
-1. Start with your best 10 customers — what do they share?
-2. Look at your worst 10 — what disqualified them in hindsight?
-3. Patterns in best but NOT worst = Tier 1 criteria
-
-### Dimension 2: Technographic Fit
-
-| Signal | Strength | Why |
-|--------|----------|-----|
-| Uses your integration partners | Strong | Lower friction |
-| Uses a competitor | Strong | Active buyer, proven budget |
-| Tech stack complexity matches | Medium | Right sophistication |
-| Recently adopted adjacent tools | Medium | Active buying cycle |
-
-### Dimension 3: Buying Intent Signals
-
-| Signal | Intent Level | Weight |
-|--------|-------------|--------|
-| Hiring for role your service supports | Very High | 5x |
-| Recent funding | High | 4x |
-| Competitor evaluation (G2, reviews) | Very High | 5x |
-| Content consumption | Medium-High | 3x |
-| Website visits | High | 4x |
-| Leadership change in relevant dept | Medium | 2x |
-
-### Dimension 4: Persona Mapping
-
-For each ICP tier, define 2-3 target personas:
-
-| Attribute | What to Define |
-|-----------|---------------|
-| Title patterns | All variants (VP Sales, Vice President Revenue, Head of Sales) |
-| Department | Sales, Marketing, RevOps, Growth |
-| Seniority | C-Suite, VP, Director, Manager |
-| Decision role | Economic buyer, Champion, Influencer, Blocker |
-| Pain points | 3-5 specific, measurable pains |
-| Buying triggers | Events that push them to evaluate |
-| Common objections | Top 3-5 reasons they say no |
-
-### Dimension 5: Engagement Readiness
-
-| Factor | High Readiness | Low Readiness |
-|--------|---------------|---------------|
-| Previous interactions | Engaged before | Cold |
-| Outbound receptiveness | SMB/mid-market, growth-stage | Enterprise, gatekept |
-| Channel preference | Active on LinkedIn, responsive | Dark social |
-| Sales cycle | < 60 days | 6+ months |
-| Committee size | 1-3 decision makers | 5+ stakeholders |
+Targeting, qualification, and signal detection for Phase 1 intake and Phase 2 AI qualification. This is a reference — come here when you need specifics, don't dump this at the user.
 
 ---
 
-## The FITS Qualification Framework
+## The Fewest Qualifiers Principle
 
-Score every lead across 4 dimensions (100 points total):
+Don't build a 5-dimension matrix. Find the **3 to 5 traits your best customers share** — that's the entire targeting criteria.
 
-| Dimension | Weight | Points |
-|-----------|--------|--------|
-| **F** — Firmographic Fit | 25% | 0-25 |
-| **I** — Intent Signals | 35% | 0-35 |
-| **T** — Technographic Match | 20% | 0-20 |
-| **S** — Structural Readiness | 20% | 0-20 |
+**How to find them:**
+1. Think of your best 3 to 5 clients — the ones who paid well, got results, and were easy to work with
+2. What do they all have in common? Industry, size, location, pain, growth stage?
+3. The minimum set of overlapping traits = your qualifiers
+4. Add a qualifier only if losing it would mean targeting the wrong people
 
-### Tier Assignment
+**Examples of good qualifiers:**
+- "Owner-operated cleaning companies doing $300K+ in Sacramento"
+- "Plumbers with 50+ Google reviews in the Central Valley"
+- "Home service businesses that rely on Google to get leads"
 
-| Score | Tier | Action |
-|-------|------|--------|
-| 80-100 | Tier 1: Bullseye | Hyper-personalized, multi-channel |
-| 60-79 | Tier 2: Strong Fit | Signal-based personalization |
-| 40-59 | Tier 3: Good Fit | Bucket personalization |
-| 20-39 | Tier 4: Stretch | Small batch test only |
-| 0-19 | DQ | Do not contact |
-
-### Hard Disqualifiers (instant remove)
-
-- Outside serviceable company size range
-- Excluded industry
-- Restricted geography
-- Already a customer
-- Direct competitor
-- Invalid email
-- On do-not-contact list
-- Duplicate in active campaign
+**Red flag:** More than 5 qualifiers usually means you're describing one past client, not a pattern.
 
 ---
 
-## Intent Signal Taxonomy
+## Avatar Refinement Survey (Hormozi Method)
 
-### Category 1: First-Party (Highest Reliability)
-Signals involving YOUR brand: website visits, content downloads, webinar attendance, previous outreach replies, demo requests.
+Use this when the user has existing customers and wants better targeting than guessing.
 
-### Category 2: Third-Party (High Reliability)
-Signals on other platforms: G2/Capterra research, competitor alternative searches, topic-based intent data, community questions.
+Generate a short survey for them to send to their top 10 clients. Four categories:
 
-### Category 3: Public (Medium Reliability, Free)
-Observable events anyone can detect:
+**Demographics:**
+- Age range, gender, location
+- Married / in a partnership?
+- Political leaning (relevant for some niches)
 
-| Signal | Reliability | Urgency | Source |
-|--------|------------|---------|--------|
-| Hiring for target role | High | High | LinkedIn Jobs, Indeed, careers page |
-| Funding | High | Medium-High | Crunchbase, press |
-| Leadership changes | Medium-High | Medium | LinkedIn, press |
-| Product launches | Medium | Medium | Blog, Product Hunt, PR |
-| Tech stack changes | Medium | Medium-High | BuiltWith, job descriptions |
-| M&A activity | High | Medium | News, SEC filings |
-| Office expansion | Medium | Medium | News, job listings |
+**Business stats:**
+- Revenue when they first hired you vs. now
+- Number of employees
+- How long have they been in business
+- How they were getting clients before hiring you
 
-### Category 4: Social (Variable)
-Content published or engaged with: LinkedIn posts about pain, competitor content shares, vendor recommendation requests, role changes.
+**Aspiration:**
+- What goal were they trying to achieve when they hired you?
+- What problem were they solving?
 
-### Signal Scoring
+**Buying process:**
+- Single biggest reason they decided to hire you
+- What finally pushed them to make a decision?
+- Did they consume any of your content or referrals first? What?
+- How long from first hearing about you to hiring you?
+- Where did they find you?
 
-```
-Signal Score = (Recency x 3) + (Directness x 3) + (Frequency x 2) + (Specificity x 1) + (Source x 1)
-```
-
-Each factor rated 1-5. Max score: 50.
-
-| Score | Priority | Action |
-|-------|----------|--------|
-| 40-50 | Critical | Contact within 24 hours |
-| 30-39 | High | Contact within 3 days |
-| 20-29 | Medium | Next campaign batch |
-| 10-19 | Low | Monitor |
-| < 10 | Noise | Ignore |
-
-### Signal Decay
-
-Signals lose value over time. A funding round from last week is urgent. From 6 months ago, it's a fact, not a signal.
-
-- Hiring signals: stale after 4 weeks
-- Funding: stale after 30 days (useful context up to 90)
-- Leadership change: window is day 14-60 of new role
-- Content publication: within 48 hours or it's creepy
-- Competitor churn: immediate (highest urgency trigger)
+**After collecting responses:** Sort by clients you liked most + longest retention + highest spend. Find the 3 to 5 traits all the top ones share. That's the new ICP.
 
 ---
 
-## 12 Core Trigger Events
+## AI Qualification Logic (Step 4 Reference)
 
-| # | Trigger | Urgency Window | Message Angle | Target Persona |
-|---|---------|---------------|---------------|----------------|
-| 1 | New funding | Within 2 weeks | "Post-{{round}}, most teams invest in [category] within 90 days" | CEO (Seed), VP Sales (A+) |
-| 2 | Hiring target role | Within 1 week | "Hiring {{role}} usually means you're building the engine" | Hiring manager or their boss |
-| 3 | Leadership change | Day 14-60 | "First 90 days in a new role..." | The new executive |
-| 4 | Tech stack change | Within 2 weeks | "Teams migrating to {{tool}} usually rethink {{category}}" | Stack owner |
-| 5 | Competitor churn | Within 48 hours | "Moving off {{competitor}}? Here's how we handle that" | Original purchase decision-maker |
-| 6 | Product launch | Week 1-4 after | "New product = new GTM needs" | VP Marketing/Sales |
-| 7 | Earnings/revenue | 1-3 weeks after | Revenue pressure or growth opportunity angle | Depends on situation |
-| 8 | Conference attendance | 1-2 weeks before or 1 week after | "Ahead of {{event}}..." or "Hope {{event}} was great" | Attendee/speaker |
-| 9 | Content publication | Within 48 hours | "Your post about {{topic}} resonated" | The author |
-| 10 | Award/recognition | Within 1-2 weeks | "Congrats on {{award}}" | Company leadership |
-| 11 | M&A activity | 30-90 days post | "Post-acquisition teams need to consolidate and scale" | Integration leads |
-| 12 | Regulatory change | 2-8 weeks after | "With {{change}}, most teams rethink {{category}}" | Compliance/ops leads |
+When reading a prospect's website and reviews in Phase 2 Step 4, look for:
 
-### Trigger Priority (when multiple fire)
+### Green Flags (push toward T1/T2)
+- Revenue signals: mentions pricing, "we're growing", team size is a real business
+- Pain signals: negative reviews about wait times, capacity issues, communication problems (these are your opening)
+- Buying trigger signals: "now hiring", "new location", "just launched", renovation or rebranding language
+- Qualifiers match: all 3-5 ICP qualifiers confirmed from the scraped data
 
-1. Competitor churn (active buyer, proven budget)
-2. Hiring for target role (budget allocated)
-3. First-party signals (direct engagement)
-4. Leadership change < 60 days
-5. Funding < 30 days
-6. Tech stack change
-7. Content/social signals
-8. Events/conferences
+### Red Flags (push toward T3 or DQ)
+- No website or single-page placeholder — probably too small
+- "Permanently closed" or sparse reviews — inactive or dying
+- Already using a direct competitor's branding language — possible contract
+- Service area mismatch — not in the target geography
+- Business type mismatch — even if found in the search
+
+### Hard DQ Criteria
+- Email is invalid (removed by ZeroBounce)
+- Already in an active Instantly campaign
+- On a do-not-contact list
+- Personal email (gmail, yahoo) — unless targeting solopreneurs
 
 ---
 
-## Lead Priority Score
+## Buying Signals to Watch For
 
-```
-Priority = (Fit x 0.30) + (Intent x 0.45) + (Engagement x 0.25)
-```
+When scraping and qualifying, these signals increase tier:
 
-Intent weighted highest because a moderately-fit company with strong intent beats a perfect-fit company with no intent.
+| Signal | What It Looks Like | Urgency |
+|--------|-------------------|---------|
+| Hiring | "Now hiring" page, Indeed job posts | High — budget allocated |
+| Growing language | "New location", "expanded team", "2024 relaunch" | Medium-High |
+| Negative reviews | 2-3 star reviews mentioning fixable problems | High — pain is visible |
+| Outdated site | Last blog post 2+ years ago, broken pages | Medium — opportunity |
+| No Google posts | GMB profile with 0 posts | Medium — gap you can fill |
+| High review count | 100+ reviews = established, has money | Medium — proven business |
 
-| Score | Tier | Action | SLA |
-|-------|------|--------|-----|
-| 80-100 | P1 Hot | Multi-channel outreach | Within 24 hours |
-| 60-79 | P2 Warm | Priority email sequence | Within 3 days |
-| 40-59 | P3 Active | Standard campaign | Within 1 week |
-| 20-39 | P4 Passive | Low-priority/nurture | Monthly |
-| 0-19 | P5 Cold | Do not contact | Quarterly review |
-
-### Campaign-Type Adjustments
-
-| Type | Fit | Intent | Engagement |
-|------|-----|--------|------------|
-| ABM (1-50 accounts) | 0.40 | 0.40 | 0.20 |
-| Trigger-based | 0.20 | 0.60 | 0.20 |
-| Re-engagement | 0.20 | 0.30 | 0.50 |
-| Scaled outbound | 0.35 | 0.40 | 0.25 |
+**Signal decay:** Hiring posts stale after 4 weeks. Content signals stale after 48 hours. Everything else: use common sense — a 3-year-old "now hiring" sign isn't a signal.
 
 ---
 
-## Persona Blueprint (Quick Reference)
+## Tier Assignment Quick Reference
 
-For each target persona, capture:
+| Tier | Criteria | Personalization Level |
+|------|----------|-----------------------|
+| T1 | All qualifiers confirmed + at least one buying signal | Custom line per lead |
+| T2 | All qualifiers confirmed, no signal found | Bucket opener by segment |
+| T3 | Most qualifiers confirmed, one missing | Generic industry opener |
+| DQ | Fails a qualifier or hard DQ criteria | Remove from list |
 
-1. **Identity:** Title patterns, seniority, department, reports to, team size
-2. **Pain Hierarchy (ranked):** P1 (critical, full budget authority) through P5 (low priority). Lead outreach with P1-P2.
-3. **Motivation Map:** Career goals, team goals, personal drivers. People buy for personal reasons and justify with business reasons.
-4. **Language Profile:** Their words for the problem, the goal, the frustration. Use THEIR language, not yours.
-5. **Buying Behavior:** Research style, decision speed, risk tolerance, champion vs buyer, preferred channels
-6. **Anti-Persona Signals:** Title includes "Interim," company in hiring freeze, just implemented a competitor, too senior/junior for your product
-
-### Multi-Persona Account Strategy
-
-```
-Economic Buyer (signs check) — lead with ROI
-Champion (sells internally) — lead with ease and efficiency
-Influencer (shapes evaluation) — lead with day-to-day pain relief
-Blocker (can kill deal) — lead with compliance and risk reduction
-```
-
-Start with the Champion. Get them to introduce you to the Economic Buyer. Address the Blocker proactively.
+Keep the tiers simple. A lead either fits or it doesn't — don't overthink borderline cases. When in doubt, DQ. A smaller, cleaner list outperforms a bigger, messier one every time.

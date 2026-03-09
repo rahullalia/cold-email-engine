@@ -262,6 +262,19 @@ Structure the sequence as **two pairs of two emails in separate threads**, not o
 - Minimum 200 sends per variant
 - Winner = highest **positive** reply rate (not total)
 
+### Content-Priming (Hormozi Method)
+
+78% of high-value buyers consume 2+ pieces of genuine content before they're ready to buy. Instead of pushing for a meeting in Email 3, inject a content piece.
+
+**How to use it:**
+- Email 3 (Thread B opener): offer something genuinely useful — a case study, a short guide, a before/after breakdown, a video
+- Frame it as "I made this for companies like yours" not "download my lead magnet"
+- Ask the user which content asset to use. If they don't have one, suggest they create a one-page case study from an existing client result first.
+- The goal: warm the prospect before asking for time. Let the content do the selling.
+
+**Example:**
+> "Put together a breakdown of how we helped a cleaning company in Folsom get from 38 to 156 Google reviews in 60 days. Worth sending over if you want to see the playbook?"
+
 ### Key Sequence Rules
 
 - Each follow-up adds NEW information (never "just bumping this")
