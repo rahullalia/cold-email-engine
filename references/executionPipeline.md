@@ -2,7 +2,7 @@
 
 API details, actor IDs, endpoints, request/response formats, and error handling for the cold email execution pipeline. This is the technical backbone of Phase 2.
 
-Credentials are loaded from `~/lalia/4-Resources/mcp/coldEmail.env`.
+Credentials are loaded from `coldEmail.env`.
 
 ---
 
@@ -464,7 +464,7 @@ If pushing via CSV instead of API (fallback):
 
 ## Credential File Format
 
-`~/lalia/4-Resources/mcp/coldEmail.env`:
+`coldEmail.env`:
 ```
 APIFY_API_TOKEN=apify_api_xxxxxxxxxxxx
 ZEROBOUNCE_API_KEY=xxxxxxxxxxxxxxxxxxxx

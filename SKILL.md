@@ -25,13 +25,13 @@ The three layers of this skill, in order of importance:
 
 ## Step 0: Credential Check
 
-Before anything else, read `4-Resources/mcp/coldEmail.env` from the workspace root.
+Before anything else, look for a `coldEmail.env` file. Check the current working directory first, then the project root.
 
 Required keys: `APIFY_API_TOKEN`, `ZEROBOUNCE_API_KEY`, `INSTANTLY_API_KEY`
 
 If any key is missing or the file doesn't exist, stop and tell the user:
 ```
-Missing credentials. Create ~/lalia/4-Resources/mcp/coldEmail.env with:
+Missing credentials. Create a coldEmail.env file with:
 APIFY_API_TOKEN=your_key
 ZEROBOUNCE_API_KEY=your_key
 INSTANTLY_API_KEY=your_key
@@ -175,7 +175,7 @@ Select the right actor:
 | Restaurants, salons, contractors | Yelp Scraper |
 | Any business with a website | Website Content Crawler |
 
-For local service businesses (RSL/A's typical target): run **Google Maps Scraper** first to get business profiles with websites, then run **Website Content Crawler** on each domain to pull contact emails. Two-step scrape.
+For local service businesses: run **Google Maps Scraper** first to get business profiles with websites, then run **Website Content Crawler** on each domain to pull contact emails. Two-step scrape.
 
 Before running: estimate credits and confirm with the user. Build actor input from the campaign brief. Run via Apify API, poll for completion, download dataset as JSON.
 
