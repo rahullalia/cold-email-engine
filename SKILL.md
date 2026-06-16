@@ -96,10 +96,11 @@ If ICP = B2B and they choose Apify: tell them Google Maps and Yelp actors don't 
 
 **C. Verification tool:**
 > "How do you want to verify emails? Options:
-> - ZeroBounce (I'll run it automatically — recommended)
+> - MillionVerifier (I'll run it automatically — recommended: cheapest, lifetime credits, only bills ok/invalid/disposable)
+> - ZeroBounce (I'll run it automatically)
 > - NeverBounce (I'll use their API, same result)
 > - Already verified (skip this step)
-> - Apollo built-in verification (workable, but I'd recommend a final ZeroBounce pass if you have credits)"
+> - Apollo built-in verification (workable, but I'd recommend a final MillionVerifier pass if you have credits)"
 
 **D. Content asset:**
 > "Do you have any content you could genuinely send to a prospect — a case study, a short guide, a before/after breakdown, a client result story?"

@@ -280,6 +280,71 @@ Same pattern as ZeroBounce: pre-flight credit check, partial result reporting, n
 
 ---
 
+## Step 3 (Alternate): MillionVerifier
+
+The cost-efficient default for cold email. Cheaper than ZeroBounce, credits never expire, and it only bills `ok` / `invalid` / `disposable` results. `catch_all` and `unknown` are free.
+
+Run it with `mvVerify.py` at the leadEngine root (pure stdlib, concurrent, resumable):
+
+```
+python3 mvVerify.py INPUT.csv --out-dir DIR --workers 10
+```
+
+It dedupes emails before verifying (pay once per unique address), streams to `mvResults.jsonl` so an interrupted run resumes without re-charging, and splits rows into `mvValid` / `mvCatchAll` / `mvInvalid` / `mvDisposable` / `mvUnknown` / `mvError` CSVs plus a combined `mvResult.csv`.
+
+**Free dry test:** pass `--api-key API_KEY_FOR_TEST` to validate the whole flow end to end with random verdicts at zero credit cost before a real run. `--dry-run` estimates without making any calls.
+
+### Single (real-time) API
+
+```
+GET https://api.millionverifier.com/api/v3/?api={KEY}&email={email}&timeout=20
+```
+
+Response:
+```json
+{
+  "email": "test@example.com",
+  "quality": "good",
+  "result": "ok",
+  "resultcode": 1,
+  "subresult": "",
+  "free": false,
+  "role": false,
+  "didyoumean": "",
+  "credits": 12345,
+  "executiontime": 1,
+  "error": "",
+  "livemode": true
+}
+```
+
+### Result values and actions
+
+Bucket on the `result` string, not `resultcode`.
+
+| result | quality | Action |
+|--------|---------|--------|
+| `ok` | good | Keep — primary list |
+| `catch_all` | risky | Keep — secondary "risky" segment (send at 50%) |
+| `invalid` | bad | Remove |
+| `disposable` | bad | Remove |
+| `unknown` | risky | Remove (free to re-verify later) |
+
+### Credit check
+
+```
+GET https://api.millionverifier.com/api/v3/credits?api={KEY}
+```
+Response: `{"credits": 12345}`. Only `ok` / `invalid` / `disposable` consume a credit; `catch_all` and `unknown` are free.
+
+### MillionVerifier Error Handling
+
+- **Bad key / no credits:** the `error` field is populated and `result` is an error state. Those rows land in `mvError.csv` and are never charged. `mvVerify.py` aborts up front if the credit balance reads 0.
+- **Transport errors (429 / 5xx / timeout):** retried with backoff, then marked `error` (not charged). Re-run to pick them up from the cache, no double-charge.
+- **Bulk file API** (`https://bulkapi.millionverifier.com/bulkapi/v2/...`) exists for very large lists, but the concurrent single-API path in `mvVerify.py` is the default — it is free to dry-test and resumable.
+
+---
+
 ## Step 6: Instantly
 
 ### API Base URL
@@ -458,15 +523,18 @@ If pushing via CSV instead of API (fallback):
 |---------|-------|
 | Apify | No hard limit on API calls; credits-based |
 | ZeroBounce | 100 emails per batch request; credits-based |
+| MillionVerifier | Single real-time API; concurrent (default 10 workers in `mvVerify.py`); credits-based |
 | Instantly | 10 requests/second |
 
 ---
 
 ## Credential File Format
 
-`coldEmail.env`:
+The live leadEngine project loads credentials from `.env` (not `coldEmail.env`):
 ```
+ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxx
 APIFY_API_TOKEN=apify_api_xxxxxxxxxxxx
+MILLIONVERIFIER_API_KEY=xxxxxxxxxxxxxxxxxxxx
 ZEROBOUNCE_API_KEY=xxxxxxxxxxxxxxxxxxxx
 INSTANTLY_API_KEY=xxxxxxxxxxxxxxxxxxxx
 ```
